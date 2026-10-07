@@ -30,3 +30,10 @@ Upstream commit series ending at `433d096` /
 - Homepage / repository URLs point at https://github.com/smart-art/pymax
 - Package name set to `pymax` for this repository
 - MIT license retained from upstream
+
+### CI workflows
+
+Upstream GitHub Actions under `.github/workflows/` were omitted from this
+fork so the initial push does not require the OAuth `workflow` scope.
+Re-add CI later if desired.
+
