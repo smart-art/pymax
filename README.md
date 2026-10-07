@@ -4,14 +4,25 @@ Python-библиотека для Max API.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Package](https://img.shields.io/badge/package-maxapi--python-orange.svg)](https://pypi.org/project/maxapi-python/)
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/maxapi-python?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/maxapi-python)
+[![Package](https://img.shields.io/badge/package-pymax-orange.svg)](https://github.com/smart-art/pymax)
+[![Fork of](https://img.shields.io/badge/upstream-MaxApiTeam%2FPyMax-lightgrey.svg)](https://github.com/MaxApiTeam/PyMax)
 
 > [!WARNING]
 > PyMax использует неофициальный внутренний API Max. API может измениться без
 > предупреждения, а использование библиотеки может нарушать условия сервиса.
 > Вы используете PyMax на свой риск; авторы и контрибьюторы не несут
 > ответственности за блокировки аккаунтов, потерю данных или другие последствия.
+
+
+## About this fork
+
+Public fork of [MaxApiTeam/PyMax](https://github.com/MaxApiTeam/PyMax) at tag
+`v2.4.1`, with the photo upload fix from upstream PR
+[#107](https://github.com/MaxApiTeam/PyMax/pull/107) applied.
+
+Import name remains `pymax`. Package version is `2.4.1+fork.1`. See
+[PATCHES.md](PATCHES.md) for the exact change list.
+
 
 ## Что это
 
@@ -37,20 +48,22 @@ WebSocket.
 
 Требуется Python 3.10 или новее.
 
+Из этого репозитория:
+
 ```bash
-pip install -U maxapi-python
+pip install "git+https://github.com/smart-art/pymax.git@main"
 ```
 
 Через `uv`:
 
 ```bash
-uv add -U maxapi-python
+uv add "git+https://github.com/smart-art/pymax.git@main"
 ```
 
-Напрямую из репозитория:
+Upstream PyPI package (without this fork's patches):
 
 ```bash
-pip install git+https://github.com/MaxApiTeam/PyMax.git
+pip install -U maxapi-python
 ```
 
 ## Быстрый старт
@@ -164,8 +177,9 @@ uv run sphinx-build -b html docs docs/_build/html
 
 ## Ссылки
 
-- [GitHub](https://github.com/MaxApiTeam/PyMax)
-- [PyPI](https://pypi.org/project/maxapi-python/)
+- [This fork](https://github.com/smart-art/pymax)
+- [Upstream MaxApiTeam/PyMax](https://github.com/MaxApiTeam/PyMax)
+- [Upstream PyPI (maxapi-python)](https://pypi.org/project/maxapi-python/)
 - [Telegram](https://t.me/pymax_news)
 
 ## Лицензия

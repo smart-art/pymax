@@ -1,6 +1,6 @@
 [project]
-name = "maxapi-python"
-version = "2.4.1"
+name = "pymax"
+version = "2.4.1+fork.1"
 description = "Python wrapper для API мессенджера Max"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -35,10 +35,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/MaxApiTeam/PyMax"
-Repository = "https://github.com/MaxApiTeam/PyMax"
-Issues = "https://github.com/MaxApiTeam/PyMax/issues"
-Documentation = "https://docs.pymax.org"
+Homepage = "https://github.com/smart-art/pymax"
+Repository = "https://github.com/smart-art/pymax"
+Issues = "https://github.com/smart-art/pymax/issues"
+Documentation = "https://github.com/smart-art/pymax#readme"
 
 
 [build-system]
