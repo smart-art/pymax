@@ -25,6 +25,7 @@ class MessageMixin(IClientProtocol):
         *,
         notify: bool = True,
         send_at: DateTimeUnion | None = None,
+        link_preview: bool | None = None,
     ) -> Message:
         """Отправляет сообщение в чат.
 
@@ -37,6 +38,10 @@ class MessageMixin(IClientProtocol):
             send_at: Время отложенной отправки: ``datetime`` для абсолютного
                 времени, ``timedelta`` для задержки или Unix time в секундах
                 как ``int``. ``None`` и ``0`` отправляют сообщение сразу.
+            link_preview: Предпросмотр ссылок (поле ``detectShare``).
+                ``False`` — сервер не прикрепляет превью ссылки из текста,
+                ``True`` — просит сервер его сгенерировать, ``None`` (по
+                умолчанию) — поле не передаётся, решает сервер.
 
         Returns:
             Отправленное сообщение.
@@ -51,6 +56,7 @@ class MessageMixin(IClientProtocol):
             attachments,
             notify=notify,
             send_at=send_at,
+            link_preview=link_preview,
         )
 
     async def get_message(

@@ -199,6 +199,7 @@ class MessageService:
         *,
         notify: bool = True,
         send_at: DateTimeUnion | None = None,
+        link_preview: bool | None = None,
     ) -> Message:
         logger.info("sending message chat_id=%s text_len=%s", chat_id, len(text) if text else 0)
 
@@ -227,6 +228,7 @@ class MessageService:
                 )
                 if send_at
                 else None,
+                detect_share=link_preview,
             ),
             notify=notify,
         )

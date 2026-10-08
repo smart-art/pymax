@@ -43,6 +43,30 @@ async def test_send_message_formats_markdown_uploads_attachments_and_binds_resul
 
 
 @pytest.mark.asyncio
+async def test_send_message_omits_detect_share_by_default() -> None:
+    app = FakeApp([frame(message_payload(56, 100, "see https://example.com"))])
+
+    await app.api.messages.send_message(100, "see https://example.com")
+
+    assert "detectShare" not in app.calls[0].payload["message"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("link_preview", [False, True])
+async def test_send_message_link_preview_sets_detect_share(link_preview: bool) -> None:
+    app = FakeApp([frame(message_payload(57, 100, "see https://example.com"))])
+
+    await app.api.messages.send_message(
+        100,
+        "see https://example.com",
+        link_preview=link_preview,
+    )
+
+    assert app.calls[0].opcode == Opcode.MSG_SEND
+    assert app.calls[0].payload["message"]["detectShare"] is link_preview
+
+
+@pytest.mark.asyncio
 async def test_send_message_raises_when_attachment_upload_fails() -> None:
     app = FakeApp()
     app.api.uploads.photo_result = None

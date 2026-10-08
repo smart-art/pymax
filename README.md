@@ -20,7 +20,16 @@ Public fork of [MaxApiTeam/PyMax](https://github.com/MaxApiTeam/PyMax) at tag
 `v2.4.1`, with the photo upload fix from upstream PR
 [#107](https://github.com/MaxApiTeam/PyMax/pull/107) applied.
 
-Import name remains `pymax`. Package version is `2.4.1+fork.1`. See
+It also adds a `link_preview` option to `send_message` (and `Message.reply` /
+`Message.answer` / `Chat.answer`), mapped to the `detectShare` field of the
+outgoing message: `link_preview=False` sends a message without a link preview
+card, `True` asks the server to generate one, `None` (default) omits the field.
+
+```python
+await client.send_message(chat_id, "Docs: https://example.com", link_preview=False)
+```
+
+Import name remains `pymax`. Package version is `2.4.1+fork.2`. See
 [PATCHES.md](PATCHES.md) for the exact change list.
 
 

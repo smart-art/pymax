@@ -8,7 +8,7 @@ This repository is a public fork of
 
 - Package / dist name: `pymax`
 - Import name: `pymax` (unchanged)
-- Version: `2.4.1+fork.1` (PEP 440 local version)
+- Version: `2.4.1+fork.2` (PEP 440 local version)
 
 ## Applied changes
 
@@ -24,6 +24,21 @@ Upstream commit series ending at `433d096` /
   `_extract_photo_token`.
 - Raise `UploadError` if the response contains 0 or more than 1 photo.
 - Regression tests in `tests/api/test_upload_service.py`.
+
+### Link preview control (`detectShare`)
+
+- Files: `src/pymax/api/messages/payloads.py`, `src/pymax/api/messages/service.py`,
+  `src/pymax/infra/message.py`, `src/pymax/types/domain/message.py`,
+  `src/pymax/types/domain/chat.py`
+- `SendMessagePayloadMessage` gains `detect_share: bool | None`, serialized
+  as `message.detectShare` (omitted when `None`). Official MAX clients send this
+  flag on every outgoing message; when it is true the server detects a URL in
+  the text and attaches a link preview (`SHARE` attach).
+- `send_message(..., link_preview=...)` (service + `Client`) and the bound
+  helpers `Message.reply`, `Message.answer`, `Chat.answer` pass it through.
+  `link_preview=False` → `detectShare: false` (no preview card);
+  `True` → `detectShare: true`; `None` (default) → field omitted, server default.
+- Tests in `tests/api/test_message_service.py`.
 
 ### Metadata
 

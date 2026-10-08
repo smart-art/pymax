@@ -260,6 +260,7 @@ class Message(CamelModel):
         *,
         notify: bool = True,
         send_at: DateTimeUnion | None = None,
+        link_preview: bool | None = None,
     ) -> Message:
         """Отправляет ответ на это сообщение в тот же чат.
 
@@ -272,6 +273,9 @@ class Message(CamelModel):
         :param send_at: Абсолютный ``datetime``, относительный ``timedelta``
             или Unix time в секундах. ``None`` и ``0`` отправляют сразу.
         :type send_at: DateTimeUnion | None
+        :param link_preview: Предпросмотр ссылок (``detectShare``): ``False`` —
+            без превью, ``True`` — с превью, ``None`` — решает сервер.
+        :type link_preview: bool | None
         :returns: Отправленное сообщение.
         :rtype: Message
         :raises RuntimeError: Если сообщение не привязано к сервису или не
@@ -286,6 +290,7 @@ class Message(CamelModel):
             attachments=attachments,
             notify=notify,
             send_at=send_at,
+            link_preview=link_preview,
         )
 
     async def answer(
@@ -296,6 +301,7 @@ class Message(CamelModel):
         *,
         notify: bool = True,
         send_at: DateTimeUnion | None = None,
+        link_preview: bool | None = None,
     ) -> Message:
         """Отправляет сообщение в тот же чат.
 
@@ -310,6 +316,9 @@ class Message(CamelModel):
         :param send_at: Абсолютный ``datetime``, относительный ``timedelta``
             или Unix time в секундах. ``None`` и ``0`` отправляют сразу.
         :type send_at: DateTimeUnion | None
+        :param link_preview: Предпросмотр ссылок (``detectShare``): ``False`` —
+            без превью, ``True`` — с превью, ``None`` — решает сервер.
+        :type link_preview: bool | None
         :returns: Отправленное сообщение.
         :rtype: Message
         :raises RuntimeError: Если сообщение не привязано к сервису или не
@@ -324,6 +333,7 @@ class Message(CamelModel):
             attachments=attachments,
             notify=notify,
             send_at=send_at,
+            link_preview=link_preview,
         )
 
     async def forward(

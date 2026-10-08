@@ -161,6 +161,7 @@ class Chat(CamelModel):
         attachments: SendAttachments = None,
         *,
         notify: bool = True,
+        link_preview: bool | None = None,
     ) -> Message:
         """Отправляет сообщение в этот чат.
 
@@ -172,6 +173,9 @@ class Chat(CamelModel):
         :type attachments: SendAttachments
         :param notify: Отправить ли получателям push-уведомление.
         :type notify: bool
+        :param link_preview: Предпросмотр ссылок (``detectShare``): ``False`` —
+            без превью, ``True`` — с превью, ``None`` — решает сервер.
+        :type link_preview: bool | None
         :returns: Отправленное сообщение.
         :rtype: Message
         :raises RuntimeError: Если чат не привязан к клиенту.
@@ -184,6 +188,7 @@ class Chat(CamelModel):
             reply_to=reply_to,
             attachments=attachments,
             notify=notify,
+            link_preview=link_preview,
         )
 
     async def history(

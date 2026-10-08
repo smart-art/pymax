@@ -45,6 +45,10 @@ class SendMessagePayloadMessage(CamelModel):
     attaches: list[AttachPhotoPayload | VideoAttachPayload | AttachFilePayload | Poll]
     link: ReplyLink | None = None
     delayed_attributes: DelayedAttributes | None = None
+    # Serialized as ``detectShare``. ``True`` asks the server to detect a URL in
+    # ``text`` and attach a link preview (SHARE attach); ``False`` disables
+    # it. ``None`` omits the field and leaves the server default.
+    detect_share: bool | None = None
 
 
 class SendMessagePayload(CamelModel):
